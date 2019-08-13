@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Image Update</title>
+</head>
+
+<body>
+    <p>
+        <h3>Upload image</h3>
+        <form action="/uploader" enctype="multipart/form-data" method="POST">
+            <table style="border: so">
+                <tr>
+                    <td>
+                        <label for="img_01">Image</label>
+                    </td>
+                    <td>
+                        &emsp;:&emsp;
+                    </td>
+                    <td>
+                        <input id="img_01" name="img_01" type="file">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="3" style="text-align: end">
+                        <hr>
+                        <input type="submit" value="submit">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </p>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Result</title>
+</head>
+
+<body>
+    <p>
+        <a href="/">upload another file</a>
+        <hr>
+        <table>
+            {% for result in results %}
+            <tr>
+                <td>
+                    <h2>Result {{loop.index}}</h2>
+                </td>
+                <td>&emsp;:&emsp;</td>
+                <td>
+                    <figure>
+                        <img src="/image/{{result}}">
+                        <figcaption style="text-align: center;">
+                            {{result}}
+                        </figcaption>
+                    </figure>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </p>
+
+
+</body>
+
+</html>
