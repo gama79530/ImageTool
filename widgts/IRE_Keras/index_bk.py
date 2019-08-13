@@ -4,33 +4,16 @@ import os
 import h5py
 import numpy as np
 import argparse
+from flask import current_app
 
-from extract_cnn_vgg16_keras import VGGNet
+from .extract_cnn_vgg16_keras import VGGNet
 
+def init_img_db() :
+    # database = os.path.join(os.getcwd(),'instance\\database')
+    database = current_app.config['IMG_DATABASE_PATH']
 
-ap = argparse.ArgumentParser()
-ap.add_argument("-database", required = True,
-	help = "Path to database which contains images to be indexed")
-ap.add_argument("-index", required = True,
-	help = "Name of index file")
-args = vars(ap.parse_args())
+    img_list = get_imlist(database)
 
-
-'''
- Returns a list of filenames for all jpg images in a directory. 
-'''
-def get_imlist(path):
-    return [os.path.join(path,f) for f in os.listdir(path) if f.endswith('.jpg')]
-
-
-'''
- Extract features and index the images
-'''
-if __name__ == "__main__":
-
-    db = args["database"]
-    img_list = get_imlist(db)
-    
     print("--------------------------------------------------")
     print("         feature extraction starts")
     print("--------------------------------------------------")
@@ -49,15 +32,23 @@ if __name__ == "__main__":
     feats = np.array(feats)
     # print(feats)
     # directory for storing extracted features
-    output = args["index"]
+    output = os.path.join(database, 'imgset.file')
     
     print("--------------------------------------------------")
     print("      writing feature extraction results ...")
     print("--------------------------------------------------")
 
-
     h5f = h5py.File(output, 'w')
     h5f.create_dataset('dataset_1', data = feats)
-    # h5f.create_dataset('dataset_2', data = names)
     h5f.create_dataset('dataset_2', data = np.string_(names))
     h5f.close()
+
+
+
+
+'''
+    Returns a list of filenames for all jpg images in a directory. 
+'''
+def get_imlist(path) :
+    return [os.path.join(path,f) for f in os.listdir(path) if f.endswith('.jpg')]
+
