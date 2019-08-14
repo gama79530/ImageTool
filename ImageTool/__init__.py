@@ -11,7 +11,9 @@ def create_app(test_config=None) :
     app.config.from_mapping(
         SECRET_KEY='dev',
         INSTANCE_PATH = app.instance_path,
-        IMG_DATABASE_PATH = os.path.join(app.instance_path, 'database')
+        IMG_DATABASE_PATH = os.path.join(app.instance_path, 'database'),
+        APP_ROOT = os.getcwd(),
+        CONDA_ACTIVATE = 'C:\\Python\\Anaconda-3.7\\Scripts\\activate ImageTool'
     )
 
     if test_config is None:
