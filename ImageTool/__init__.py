@@ -13,6 +13,7 @@ def create_app(test_config=None) :
         INSTANCE_PATH = app.instance_path,
         IMG_DATABASE_PATH = os.path.join(app.instance_path, 'database'),
         APP_ROOT = os.path.dirname(app.root_path),
+        # Modifiy this to fit your computer setting
         CONDA_ACTIVATE = 'C:\\Python\\Anaconda-3.7\\Scripts\\activate ImageTool'
     )
 
