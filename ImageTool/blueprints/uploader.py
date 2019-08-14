@@ -20,16 +20,16 @@ def uploader() :
     file_name = str(hash(g)) + img_01_file.filename
     img_01_file.save(os.path.join(current_app.config['INSTANCE_PATH'], file_name))
 
+    # call query widget
     import subprocess
     query = os.path.join(current_app.config['INSTANCE_PATH'], file_name)
     index = os.path.join(current_app.config['IMG_DATABASE_PATH'], 'imgset.file')
     result = current_app.config['IMG_DATABASE_PATH']
     cwd = os.path.join(current_app.config['APP_ROOT'], 'widgts\\IRE_Keras')
     command = current_app.config['CONDA_ACTIVATE'] + ' & python -m query_online -query %s -index %s -result %s' % (query, index, result)
-
     cp = subprocess.run(command, stdout=subprocess.PIPE, shell=True, cwd=cwd, text=True)
+    # process return string to find target results
     results_str = re.findall('\[\'*.*\'\]', cp.stdout)[-1]
-
     results = list()
     for result_str in results_str.split(',') :
         results.append(result_str.strip('[]\'\n '))
