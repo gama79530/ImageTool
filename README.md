@@ -15,7 +15,8 @@ Config Needed to modified : ImageTool/ImageTool/\_\_init\_\_.py
 	CONDA_ACTIVATE = 'C:\\Python\\Anaconda-3.7\\Scripts\\activate ImageTool'  
 	
 ## How to run flask server ##
-I've upload venv in project. The following shows 'How to use in venv'
+I've upload venv in project. The following shows 'How to use in venv'  
+
 	cd "project_dir"
 	venv/Scripts/activate
 	set FLASK_APP=ImageTool
