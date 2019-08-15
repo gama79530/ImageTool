@@ -51,9 +51,9 @@ def init_img_db_cmd() :
     # click.echo('Initialized the img database.')
     database = current_app.config['IMG_DATABASE_PATH']
     index = os.path.join(current_app.config['IMG_DATABASE_PATH'], 'imgset.file')
-    command = 'python index.py -database %s -index %s' % (database, index)
-    cwd = os.path.join(os.getcwd(), 'widgts\\IRE_Keras')
-    
+    command = current_app.config['CONDA_ACTIVATE'] + ' & python index.py -database %s -index %s' % (database, index)
+    cwd = os.path.join(current_app.config['APP_ROOT'], 'widgts\\IRE_Keras')
+
     import subprocess
-    subprocess.run(command, cwd=cwd)
+    subprocess.run(command, cwd=cwd, shell=True)
     click.echo('Initialized the img database.')
