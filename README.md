@@ -8,7 +8,7 @@
 - [Image Retrieval Engine Based on Keras](https://github.com/willard-yuan/flask-keras-cnn-image-retrieval)  
 - [How to build flask server in Windows](https://gama79530.github.io/whole_page_ver/Flask.html)
 
-## Note ##	
+## Note ##
 You may run 'ImageTool' flask app and 'Image Retrieval Engine Based on Keras' app in <font color="red" >**different**</font> enviornment. You should prepare an enviornment in which 'Image Retrieval Engine Based on Keras' app can execute by yourself. Then modify the following config.
 
 Config Needed to modified : ImageTool/ImageTool/\_\_init\_\_.py  
