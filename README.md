@@ -20,7 +20,7 @@ Config Needed to modified : ImageTool/ImageTool/\_\_init\_\_.py
 
 ## How to start flask server ##
 I've uploaded a venv in project. The following shows **'How to execute ImageTool flask app in this venv'**  
-(This venv may not work on your server, but you can create a venv with flask by python and pip easily) 
+(This venv may not work on your server, but you can create a venv with flask by using python and pip easily) 
 
 	cd "project_dir"
 	venv/Scripts/activate
