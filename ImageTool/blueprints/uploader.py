@@ -32,7 +32,20 @@ def uploader() :
     results_str = re.findall('\[\'*.*\'\]', cp.stdout)[-1]
     results = list()
     for result_str in results_str.split(',') :
-        results.append(result_str.strip('[]\'\n '))
+        result = dict()
+        # get result pic file name and save it to result dict
+        result_fname = result_str.strip('[]\'\n ')
+        result['result'] = result_fname
+        # find corresponding txt to get json string
+        txt_match = re.search('\..+$', result_fname)
+        txt_fname = os.path.join(current_app.config['IMG_DATABASE_PATH'], result_fname[0 : txt_match.start()] + '.txt')
+        try :
+            with open(txt_fname) as f :
+                result['result_json'] = f.read()
+                f.close()
+        except :
+            result['result_json'] = None
+        results.append(result)
 
     os.remove(os.path.join(current_app.config['INSTANCE_PATH'], file_name))
     return render_template('result.html', results = results)

@@ -10,19 +10,33 @@
         <a href="/">upload another file</a>
         <hr>
         <table>
-            {% for result in results %}
+            {% if results %}
+            <tr>
+                <th>
+                    <h2>No.</h2>
+                </th>
+                <th>
+                    <h2>Result Image</h2>
+                </th>
+                <th>
+                    <h2>JSON string</h2>
+                </th>
+            </tr>
+            {% endif %} {% for result in results %}
             <tr>
                 <td>
-                    <h2>Result {{loop.index}}</h2>
+                    <h2>{{loop.index}}</h2>
                 </td>
-                <td>&emsp;:&emsp;</td>
                 <td>
                     <figure>
-                        <img src="/image/{{result}}">
+                        <img src="/image/{{result.result}}" style="max-width: 400px;">
                         <figcaption style="text-align: center;">
-                            {{result}}
+                            {{result.result}}
                         </figcaption>
                     </figure>
+                </td>
+                <td>
+                    {% if result['result_json'] %} <pre>{{result.result_json}}</pre> {% endif %}
                 </td>
             </tr>
             {% endfor %}
